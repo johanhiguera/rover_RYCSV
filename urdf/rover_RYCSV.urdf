@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="rover_RYCSV">
+  <link
+    name="Caja">
+    <inertial>
+      <origin
+        xyz="-0.2054 0.81002 0.029344"
+        rpy="0 0 0" />
+      <mass
+        value="0.78839" />
+      <inertia
+        ixx="0.0032586"
+        ixy="-0.0010282"
+        ixz="-8.6336E-11"
+        iyy="0.011702"
+        iyz="-1.0709E-11"
+        izz="0.0092365" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Caja.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Caja.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="Rocker_Izq">
+    <inertial>
+      <origin
+        xyz="-0.12488 -0.15227 0.01915"
+        rpy="0 0 0" />
+      <mass
+        value="0.24884" />
+      <inertia
+        ixx="0.00019094"
+        ixy="-0.00013197"
+        ixz="-6.0954E-07"
+        iyy="0.00048152"
+        iyz="3.1014E-06"
+        izz="0.00057587" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Rocker_Izq.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Rocker_Izq.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="RockerIzq"
+    type="continuous">
+    <origin
+      xyz="-0.1819 -0.20649 0.84693"
+      rpy="1.5708 0.27073 -3.1416" />
+    <parent
+      link="Caja" />
+    <child
+      link="Rocker_Izq" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link
+    name="Llanta_3">
+    <inertial>
+      <origin
+        xyz="0.024464 0 3.6082E-16"
+        rpy="0 0 0" />
+      <mass
+        value="1.0121" />
+      <inertia
+        ixx="0.0046142"
+        ixy="5.0222E-18"
+        ixz="1.9562E-18"
+        iyy="0.0029613"
+        iyz="-1.5112E-21"
+        izz="0.0029613" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7451 0.73725 0.72941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="Llanta3"
+    type="continuous">
+    <origin
+      xyz="-0.2412 -0.27065 -0.027325"
+      rpy="2.8709 -1.5708 0" />
+    <parent
+      link="Rocker_Izq" />
+    <child
+      link="Llanta_3" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <link
+    name="Bogie_Izq">
+    <inertial>
+      <origin
+        xyz="0.30239 -0.14029 0.066531"
+        rpy="0 0 0" />
+      <mass
+        value="0.3064" />
+      <inertia
+        ixx="0.0001534"
+        ixy="-1.8977E-05"
+        ixz="-1.4849E-06"
+        iyy="0.00013992"
+        iyz="-3.5931E-08"
+        izz="0.0001753" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Bogie_Izq.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Bogie_Izq.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="BogieIzq"
+    type="continuous">
+    <origin
+      xyz="0.018678 0.056231 -0.059924"
+      rpy="0 0 -0.23089" />
+    <parent
+      link="Rocker_Izq" />
+    <child
+      link="Bogie_Izq" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link
+    name="Llanta_1">
+    <inertial>
+      <origin
+        xyz="0.024464 -7.7716E-16 -7.7716E-16"
+        rpy="0 0 0" />
+      <mass
+        value="1.0121" />
+      <inertia
+        ixx="0.0046142"
+        ixy="4.962E-18"
+        ixz="3.7532E-18"
+        iyy="0.0029613"
+        iyz="-1.7586E-22"
+        izz="0.0029613" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7451 0.73725 0.72941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="Llanta1"
+    type="continuous">
+    <origin
+      xyz="0.46323 -0.10326 0.0326"
+      rpy="2.64 -1.5708 0" />
+    <parent
+      link="Bogie_Izq" />
+    <child
+      link="Llanta_1" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <link
+    name="Llanta_2">
+    <inertial>
+      <origin
+        xyz="0.024464 1.1102E-16 -2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1.0121" />
+      <inertia
+        ixx="0.0046142"
+        ixy="4.9643E-18"
+        ixz="3.1056E-18"
+        iyy="0.0029613"
+        iyz="-4.7139E-21"
+        izz="0.0029613" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7451 0.73725 0.72941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="Llanta2"
+    type="continuous">
+    <origin
+      xyz="0.13767 -0.23882 -0.0041503"
+      rpy="2.64 -1.5708 0" />
+    <parent
+      link="Bogie_Izq" />
+    <child
+      link="Llanta_2" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <link
+    name="Rocker_Der">
+    <inertial>
+      <origin
+        xyz="-0.12217 -0.14435 0.056523"
+        rpy="0 0 0" />
+      <mass
+        value="0.24884" />
+      <inertia
+        ixx="0.00019093"
+        ixy="-0.00013193"
+        ixz="5.2029E-07"
+        iyy="0.00048153"
+        iyz="-3.1174E-06"
+        izz="0.00057587" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Rocker_Der.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Rocker_Der.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="RockerDer"
+    type="continuous">
+    <origin
+      xyz="-0.17716 0.072133 0.84003"
+      rpy="1.5708 0.27073 -3.1416" />
+    <parent
+      link="Caja" />
+    <child
+      link="Rocker_Der" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link
+    name="Llanta_6">
+    <inertial>
+      <origin
+        xyz="0.024464 0 1.1102E-16"
+        rpy="0 0 0" />
+      <mass
+        value="1.0121" />
+      <inertia
+        ixx="0.0046142"
+        ixy="-2.6734E-18"
+        ixz="4.405E-18"
+        iyy="0.0029613"
+        iyz="-6.5052E-19"
+        izz="0.0029613" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7451 0.73725 0.72941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="Llanta6"
+    type="continuous">
+    <origin
+      xyz="-0.23847 -0.26273 0.103"
+      rpy="0.66019 1.5708 0" />
+    <parent
+      link="Rocker_Der" />
+    <child
+      link="Llanta_6" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <link
+    name="Bogie_Der">
+    <inertial>
+      <origin
+        xyz="0.30237 -0.14029 0.068733"
+        rpy="0 0 0" />
+      <mass
+        value="0.3064" />
+      <inertia
+        ixx="0.00015341"
+        ixy="-1.8925E-05"
+        ixz="1.3238E-06"
+        iyy="0.00013992"
+        iyz="4.8749E-08"
+        izz="0.0001753" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Bogie_Der.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Bogie_Der.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="BogieDer"
+    type="continuous">
+    <origin
+      xyz="0.021417 0.064179 0.0029481"
+      rpy="0 0 -0.23102" />
+    <parent
+      link="Rocker_Der" />
+    <child
+      link="Bogie_Der" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link
+    name="Llanta_4">
+    <inertial>
+      <origin
+        xyz="0.024464 2.2204E-16 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.0121" />
+      <inertia
+        ixx="0.0046142"
+        ixy="4.064E-18"
+        ixz="-2.0526E-18"
+        iyy="0.0029613"
+        iyz="-1.5375E-21"
+        izz="0.0029613" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7451 0.73725 0.72941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="Llanta4"
+    type="continuous">
+    <origin
+      xyz="0.46323 -0.10326 0.10005"
+      rpy="2.6398 1.5708 0" />
+    <parent
+      link="Bogie_Der" />
+    <child
+      link="Llanta_4" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <link
+    name="Llanta_5">
+    <inertial>
+      <origin
+        xyz="0.024464 2.2204E-16 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.0121" />
+      <inertia
+        ixx="0.0046142"
+        ixy="4.064E-18"
+        ixz="-1.6134E-18"
+        iyy="0.0029613"
+        iyz="-1.8924E-21"
+        izz="0.0029613" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7451 0.73725 0.72941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_RYCSV/meshes/Llanta_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="Llanta5"
+    type="continuous">
+    <origin
+      xyz="0.13767 -0.23882 0.1428"
+      rpy="2.6398 1.5708 0" />
+    <parent
+      link="Bogie_Der" />
+    <child
+      link="Llanta_5" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>
