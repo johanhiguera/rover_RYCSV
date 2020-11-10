@@ -1,1 +1,46 @@
-controller_joint_names: ['', 'RockerIzq', 'Llanta3', 'BogieIzq', 'Llanta1', 'Llanta2', 'RockerDer', 'Llanta6', 'BogieDer', 'Llanta4', 'Llanta5', 'Pivote_', 'Union1', 'Caja_Pivote_1', 'Union2', 'Caja_Pivote_2', ]
+joint_state_controller:
+  type: "joint_state_controller/JointStateController"
+  publish_rate: 50
+
+Llanta3:
+  type: "velocity_controllers/JointVelocityController"
+  joint: Llanta3
+
+Llanta1:
+  type: "velocity_controllers/JointVelocityController"
+  joint: Llanta1
+
+Llanta2:
+  type: "velocity_controllers/JointVelocityController"
+  joint: Llanta2
+
+Llanta6:
+  type: "velocity_controllers/JointVelocityController"
+  joint: Llanta6
+
+Llanta4:
+  type: "velocity_controllers/JointVelocityController"
+  joint: Llanta4
+
+Llanta5:
+  type: "velocity_controllers/JointVelocityController"  ##effort_controllers/JointEffortController
+  joint: Llanta5
+
+RockerIzq:
+  type: "effort_controllers/JointEffortController"  
+  joint: RockerIzq
+
+RockerDer:
+  type: "effort_controllers/JointEffortController"  
+  joint: RockerDer
+
+##BogieIzq:
+  ##type: "effort_controllers/JointEffortController"  
+  ##joint: BogieIzq
+
+BogieDer:
+  type: "effort_controllers/JointEffortController"  
+  joint: BogieDer
+
+
+

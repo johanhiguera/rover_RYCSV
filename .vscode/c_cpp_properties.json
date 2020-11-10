@@ -1,27 +1,32 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "",
-        "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-        "/home/jesus/catkin_ws/devel/include/**",
-        "/opt/ros/melodic/include/**",
-        "/home/jesus/catkin_ws/src/kobuki/kobuki_auto_docking/include/**",
-        "/home/jesus/catkin_ws/src/kobuki/kobuki_bumper2pc/include/**",
-        "/home/jesus/catkin_ws/src/kobuki/kobuki_controller_tutorial/include/**",
-        "/home/jesus/catkin_ws/src/kobuki_core/kobuki_dock_drive/include/**",
-        "/home/jesus/catkin_ws/src/kobuki_core/kobuki_driver/include/**",
-        "/home/jesus/catkin_ws/src/kobuki_core/kobuki_ftdi/include/**",
-        "/home/jesus/catkin_ws/src/kobuki_desktop/kobuki_gazebo_plugins/include/**",
-        "/home/jesus/catkin_ws/src/kobuki/kobuki_keyop/include/**",
-        "/home/jesus/catkin_ws/src/kobuki/kobuki_node/include/**",
-        "/home/jesus/catkin_ws/src/kobuki/kobuki_random_walker/include/**",
-        "/home/jesus/catkin_ws/src/kobuki/kobuki_safety_controller/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS"
-    }
-  ]
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/jesus/catkin_ws/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/jesus/catkin_ws/src/kobuki/kobuki_auto_docking/include/**",
+                "/home/jesus/catkin_ws/src/kobuki/kobuki_bumper2pc/include/**",
+                "/home/jesus/catkin_ws/src/kobuki/kobuki_controller_tutorial/include/**",
+                "/home/jesus/catkin_ws/src/kobuki_core/kobuki_dock_drive/include/**",
+                "/home/jesus/catkin_ws/src/kobuki_core/kobuki_driver/include/**",
+                "/home/jesus/catkin_ws/src/kobuki_core/kobuki_ftdi/include/**",
+                "/home/jesus/catkin_ws/src/kobuki_desktop/kobuki_gazebo_plugins/include/**",
+                "/home/jesus/catkin_ws/src/kobuki/kobuki_keyop/include/**",
+                "/home/jesus/catkin_ws/src/kobuki/kobuki_node/include/**",
+                "/home/jesus/catkin_ws/src/kobuki/kobuki_random_walker/include/**",
+                "/home/jesus/catkin_ws/src/kobuki/kobuki_safety_controller/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++14"
+        }
+    ],
+    "version": 4
 }

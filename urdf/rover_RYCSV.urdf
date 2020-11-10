@@ -195,7 +195,7 @@
 
   <joint
     name="BogieIzq"
-    type="continuous">
+    type="fixed">
     <origin
       xyz="0.018678 0.056231 -0.059924"
       rpy="0 0 -0.23089" />
@@ -591,4 +591,115 @@
     <axis
       xyz="1 0 0" />
   </joint>
-</robot>
+
+  <transmission name="tranmission_1">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Llanta1">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> <!-- EffortJointInterface-->
+      </joint>
+      <actuator name="left_motor_1">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_2">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Llanta2">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="left_motor_2">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_3">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Llanta3">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="left_motor_3">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_4">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Llanta4">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="right_motor_4">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_5">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Llanta5">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="right_motor_5">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_6">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Llanta6">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface><!-- EffortJointInterface-->
+      </joint>
+      <actuator name="right_motor_6">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_7">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="RockerIzq">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="right_motor_7">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_8">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="RockerDer">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="right_motor_8">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+ <!-- <transmission name="tranmission_9">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BogieIzq">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="right_motor_9">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission> -->
+
+  <transmission name="tranmission_10">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="BogieDer">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="right_motor_10">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+
+
+  <!-- Gazebo ROS Plugin-->
+  <!-- Plugin para que Gazebo pueda entender los controladores-->
+  <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/</robotNamespace>
+      </plugin>
+   </gazebo>
+
+ </robot> 
