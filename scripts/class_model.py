@@ -8,17 +8,17 @@ class Model_robot:
     def __init__(self):
 
         # Parametros de las ruedas
-        radius = 0.024464
+        radius = 0.15
 
         # Para rueda derecha
         alpha_r = - np.pi / 2
         beta_r  = np.pi
-        l_r     = 0.180723
+        l_r     = 0.15
 
         # Para rueda izquierda
         alpha_l = np.pi / 2
         beta_l  = 0
-        l_l     = 0.117539
+        l_l     = 0.15
 
         ##Vi=cin*r*vll
 

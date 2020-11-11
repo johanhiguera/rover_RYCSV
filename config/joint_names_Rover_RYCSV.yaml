@@ -2,45 +2,26 @@ joint_state_controller:
   type: "joint_state_controller/JointStateController"
   publish_rate: 50
 
-Llanta3:
+left_motor_1:
   type: "velocity_controllers/JointVelocityController"
-  joint: Llanta3
+  joint: Acople_1__rueda_1
 
-Llanta1:
+left_motor_2:
   type: "velocity_controllers/JointVelocityController"
-  joint: Llanta1
+  joint: Acople_2__rueda_2
 
-Llanta2:
+left_motor_3:
   type: "velocity_controllers/JointVelocityController"
-  joint: Llanta2
+  joint: Acople_3__rueda_3
 
-Llanta6:
+right_motor_1:
   type: "velocity_controllers/JointVelocityController"
-  joint: Llanta6
+  joint: Acople_4__rueda_4
 
-Llanta4:
+right_motor_2:
   type: "velocity_controllers/JointVelocityController"
-  joint: Llanta4
+  joint: Acople_5__rueda_5
 
-Llanta5:
+right_motor_3:
   type: "velocity_controllers/JointVelocityController"  ##effort_controllers/JointEffortController
-  joint: Llanta5
-
-RockerIzq:
-  type: "effort_controllers/JointEffortController"  
-  joint: RockerIzq
-
-RockerDer:
-  type: "effort_controllers/JointEffortController"  
-  joint: RockerDer
-
-##BogieIzq:
-  ##type: "effort_controllers/JointEffortController"  
-  ##joint: BogieIzq
-
-BogieDer:
-  type: "effort_controllers/JointEffortController"  
-  joint: BogieDer
-
-
-
+  joint: Acople_6__rueda_6

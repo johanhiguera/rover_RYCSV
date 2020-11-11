@@ -21,12 +21,12 @@ class LECTURE_KEY:
 
         self.modelo = Model_robot()
 
-        self.nameTopicPub1 = "/Llanta1/command"
-        self.nameTopicPub2 = "/Llanta2/command"
-        self.nameTopicPub3 = "/Llanta3/command"
-        self.nameTopicPub4 = "/Llanta4/command"
-        self.nameTopicPub5 = "/Llanta5/command"
-        self.nameTopicPub6 = "/Llanta6/command"
+        self.nameTopicPub1 = "/left_motor_1/command"
+        self.nameTopicPub2 = "/left_motor_1/command"
+        self.nameTopicPub3 = "/left_motor_1/command"
+        self.nameTopicPub4 = "/right_motor_1/command"
+        self.nameTopicPub5 = "/right_motor_2/command"
+        self.nameTopicPub6 = "/right_motor_3/command"
         
 
         self.nameTopicPub7 = "/vel_ddrobot"
