@@ -10,32 +10,60 @@ class Model_robot:
         # Parametros de las ruedas
         radius = 0.15
 
-        # Para rueda derecha
-        alpha_r = - np.pi / 2
-        beta_r  = np.pi
-        l_r     = 0.15
+        # Para ruedas derechas
+        alpha_r1 = 1.04041
+        beta_r1  = 2.10117
+        l_r1     = 0.3197035
+        
+        alpha_r2 = 0
+        beta_r2  = 3.14159
+        l_r2     = 0.254275
 
-        # Para rueda izquierda
-        alpha_l = np.pi / 2
-        beta_l  = 0
-        l_l     = 0.15
+        alpha_r3 = 1.04041
+        beta_r3  = 0
+        l_r3     = 0.3197035
+
+        # Para ruedas izquierdas
+        alpha_l1 = 2.10117
+        beta_l1  = 1.04041
+        l_l1     = 0.3197035
+
+        alpha_l2 = 3.14159
+        beta_l2  = 0
+        l_l2     = 0.254575
+
+        alpha_l3 = -2.10117
+        beta_l3  = -1.04041
+        l_l3     = 0.3197035
 
         ##Vi=cin*r*vll
 
         # Definicion matrices J1 y J2
-        J1 = np.array(  [ (np.sin(alpha_r+beta_r),  -np.cos(alpha_r+beta_r), -l_r*np.cos(beta_r) ),
-                          (np.cos(alpha_l+beta_l),   np.sin(alpha_l+beta_l),  l_l*np.sin(beta_l) ),
-                          (np.sin(alpha_l+beta_l),  -np.cos(alpha_l+beta_l), -l_l*np.cos(beta_l) ) ])
+        J1 = np.array(  [ (np.sin(alpha_r1+beta_r1),  -np.cos(alpha_r1+beta_r1), -l_r1*np.cos(beta_r1) ),
+                          (np.cos(alpha_r2+beta_r2),   np.sin(alpha_r2+beta_r2),  l_r2*np.sin(beta_r2) ),
+                          (np.sin(alpha_r3+beta_r3),  -np.cos(alpha_r3+beta_r3), -l_r3*np.cos(beta_r3) ),
+                          (np.sin(alpha_l1+beta_l1),  -np.cos(alpha_l1+beta_l1), -l_l1*np.cos(beta_l1) ),
+                          (np.sin(alpha_l2+beta_l2),  -np.cos(alpha_l2+beta_l2), -l_l2*np.cos(beta_l2) ),
+                          (np.sin(alpha_l3+beta_l3),  -np.cos(alpha_l3+beta_l3), -l_l3*np.cos(beta_l3) )])
 
-        J2 = np.array([(radius , 0 , 0),
-                       (0      , 0 , 0),
-                       (0      , 0 , radius)])
+        J2 = np.array([(radius , 0 , 0      , 0     , 0      , 0     ),
+                       (0      , 0 , 0      , 0     , 0      , 0     ),
+                       (0      , 0 , radius , 0     , 0      , 0     ),
+                       (0      , 0 , 0      ,radius , 0      , 0     ),
+                       (0      , 0 , 0      , 0     , radius , 0     ),
+                       (0      , 0 , 0      , 0     , 0      , radius)])
 
         # Definir Jacob_inv
 
-        self.Jacob_inv = np.matmul ( np.linalg.pinv(J1) , J2 )
+        self.Jacob_inv1 = np.matmul ( np.linalg.pinv(J2) , J1 )
+        self.Jacob_inv2 = np.matmul ( np.linalg.pinv(J1) , J2 )
 
-    def calcVel (self, vel_r, vel_l):
-        vec_Wheels = np.array([[vel_r],[0],[vel_l]])
-        vec_Vel = np.matmul(self.Jacob_inv,vec_Wheels)
+    def calcVelWheels (self, vel_x, vel_y, vel_ang):
+        vec_Vel = np.array([(vel_x),(vel_y),(vel_ang)]) # Velocidad en el marco del robot
+        velWheels = np.matmul(self.Jacob_inv1, vec_Vel)
+        return velWheels
+
+    def calcVel (self, vel_r1, vel_r2, vel_r3, vel_l1, vel_l2, vel_l3):
+        vec_Wheels = np.array([[vel_r1],[0],[vel_r3],[vel_l1],[vel_l2],[vel_l3]])
+        vec_Vel = np.matmul(self.Jacob_inv2,vec_Wheels)
         return vec_Vel

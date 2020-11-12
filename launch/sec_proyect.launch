@@ -47,7 +47,13 @@
                 left_motor_3
                 right_motor_1
                 right_motor_2
-                right_motor_3"
+                right_motor_3
+                dir_left_llanta_1
+                dir_left_llanta_3
+                dir_right_llanta_1
+                dir_right_llanta_3
+                rocker_izq
+                rocker_der"
     />
 
     <!-- ///////////////////////////////////////////////////////////////      -->
@@ -63,6 +69,13 @@
             -urdf -param robot_description 
             -model $(arg robot_name)"
             respawn="false">
+    </node>
+
+    <node 
+        pkg="rover_RYCSV" 
+        type="control_caja_node.py" 
+        name="CAJA" 
+        output="screen">        
     </node>
 
 </launch>

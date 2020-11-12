@@ -280,7 +280,7 @@
     <axis
       xyz="1 0 0" />
     <limit 
-      effort="5" velocity="10.0" />
+      effort="0.5" velocity="10.0" />
   </joint>
 
   <link
@@ -392,7 +392,7 @@
     <axis
       xyz="1 0 0" />
     <limit 
-      effort="5" velocity="10.0" />
+      effort="2" velocity="10.0" />
   </joint>
 
   <link
@@ -504,7 +504,7 @@
     <axis
       xyz="1 0 0" />
     <limit 
-      effort="5" velocity="10.0" />
+      effort="0.5" velocity="10.0" />
   </joint>
 
   <link
@@ -562,10 +562,6 @@
       xyz="0 0 1" />
     <limit 
       effort="30" velocity="10.0" lower="-3.14159" upper="3.14159" />
-    <mimic
-      joint="Caja__rocker_izq"
-      multiplier="-1"
-      offset="0" />
   </joint>
 
   <link
@@ -732,7 +728,7 @@
     <axis
       xyz="1 0 0" />
     <limit 
-      effort="5" velocity="10.0" />
+      effort="2" velocity="10.0" />
   </joint>
 
   <link
@@ -844,7 +840,7 @@
     <axis
       xyz="1 0 0" />
     <limit 
-      effort="5" velocity="10.0" />
+      effort="0.5" velocity="10.0" />
   </joint>
 
   <link
@@ -956,7 +952,7 @@
     <axis
       xyz="1 0 0" />
     <limit 
-      effort="5" velocity="10.0" />
+      effort="0.5" velocity="10.0" />
   </joint>
 
   <transmission name="tranmission_1">
@@ -1022,7 +1018,7 @@
   <transmission name="tranmission_7">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="Bogie_izq__acople_1">
-          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="dir_left_llanta_1">
           <mechanicalReduction>1</mechanicalReduction>
@@ -1032,7 +1028,7 @@
   <transmission name="tranmission_8">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="Rocker_izq__acople_3">
-          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="dir_left_llanta_3">
           <mechanicalReduction>1</mechanicalReduction>
@@ -1042,7 +1038,7 @@
   <transmission name="tranmission_9">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="Bogie_der__acople_4">
-          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="dir_right_llanta_1">
           <mechanicalReduction>1</mechanicalReduction>
@@ -1052,14 +1048,32 @@
   <transmission name="tranmission_10">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="Rocker_der__acople_6">
-          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="dir_right_llanta_3">
           <mechanicalReduction>1</mechanicalReduction>
       </actuator>
   </transmission>
 
+  <transmission name="tranmission_11">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Caja__rocker_izq">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="rocker_izq">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </actuator>
+  </transmission>
 
+  <transmission name="tranmission_12">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Caja__rocker_der">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="rocker_der">
+          <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
 
   <!-- Gazebo ROS Plugin-->
   <!-- Plugin para que Gazebo pueda entender los controladores-->
