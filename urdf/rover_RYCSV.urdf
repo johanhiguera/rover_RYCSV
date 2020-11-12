@@ -269,7 +269,7 @@
 
   <joint
     name="Acople_1__rueda_1"
-    type="revolute">
+    type="continuous">
     <origin
       xyz="0 0 -0.011825"
       rpy="3.0964 -1.5708 0" />

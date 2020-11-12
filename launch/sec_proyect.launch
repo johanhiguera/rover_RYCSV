@@ -29,10 +29,9 @@
     <!-- ///////////////////////////////////////////////////////////////      -->
     <!-- Controller Manager -->
     <!-- Load joint controller configurations from YAML file to parameter server -->
-    <rosparam 
-        file="$(find rover_RYCSV)/config/joint_names_Rover_RYCSV.yaml" 
-        command="load"
-    />
+    <rosparam file="$(find rover_RYCSV)/config/joint_names_Rover_RYCSV.yaml" command="load" />
+
+    <rosparam file="$(find kobuki_trayectory)/config/parameters.yaml" command="load" />
 
     <!-- load the controllers -->
     <node 
@@ -74,8 +73,21 @@
     <node 
         pkg="rover_RYCSV" 
         type="control_caja_node.py" 
-        name="CAJA" 
-        output="screen">        
+        name="Control_caja" 
+        output="screen">     
     </node>
 
+    <node 
+        pkg="rover_RYCSV" 
+        type="control_motores_node.py" 
+        name="Control_motores" 
+        output="screen">     
+    </node>
+
+    <node 
+        pkg="rover_RYCSV" 
+        type="control_dir_ruedas_node.py" 
+        name="Control_dir_ruedas" 
+        output="screen">     
+    </node>
 </launch>
