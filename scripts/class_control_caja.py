@@ -8,7 +8,7 @@ class CONTROL_CAJA:
 
     def __init__(self):
         self.nameTopicPub1 = "/rocker_der/command"
-        self.nameTopicSub1 = "/joint_state"
+        self.nameTopicSub1 = "/joint_states"
 
         self.pub1 = rospy.Publisher(self.nameTopicPub1,Float64,queue_size=10)
         rospy.Subscriber(self.nameTopicSub1,JointState,self.callback)

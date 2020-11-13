@@ -224,6 +224,8 @@
       link="Acople_1" />
     <axis
       xyz="0 1 0" />
+    <limit 
+      effort="0.98" velocity="6.54498" />
   </joint>
 
   <link
@@ -448,6 +450,8 @@
       link="Acople_3" />
     <axis
       xyz="0 1 0" />
+    <limit 
+      effort="0.98" velocity="6.54498" />
   </joint>
 
   <link
@@ -672,6 +676,8 @@
       link="Acople_4" />
     <axis
       xyz="0 1 0" />
+    <limit 
+      effort="0.98" velocity="6.54498" />
   </joint>
 
   <link
@@ -896,6 +902,8 @@
       link="Acople_6" />
     <axis
       xyz="0 1 0" />
+    <limit 
+      effort="0.98" velocity="6.54498" />
   </joint>
 
   <link

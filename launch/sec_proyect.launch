@@ -31,7 +31,7 @@
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find rover_RYCSV)/config/joint_names_Rover_RYCSV.yaml" command="load" />
 
-    <rosparam file="$(find kobuki_trayectory)/config/parameters.yaml" command="load" />
+    <rosparam file="$(find rover_RYCSV)/config/parameters.yaml" command="load" />
 
     <!-- load the controllers -->
     <node 

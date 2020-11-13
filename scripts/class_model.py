@@ -8,8 +8,8 @@ from   std_msgs.msg         import Float64
 
 class Model_robot:
     def __init__(self):
-        #self.nameTopicSub1 = "/joint_state"
-        #rospy.Subscriber(self.nameTopicSub1,JointState,self.callback)
+        self.nameTopicSub1 = "/joint_states"
+        rospy.Subscriber(self.nameTopicSub1,JointState,self.callback)
         self.dir_llantas = [0,0,0,0]
 
         self.actualizar_modelo()

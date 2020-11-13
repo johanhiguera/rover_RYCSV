@@ -1,6 +1,6 @@
 #PARAMETROS DEL MODELO DEL ROBOT:
 # RADIO DE RUEDA:
-radius : 0.15
+radius : 0.075
 
 # Ubicaciones ruedas derechas
 alpha_r1 : 1.04041
@@ -29,8 +29,8 @@ beta_l3 : -1.04041
 l_l3 : 0.3197035
 
 #PARAMETROS DEL ROBOT
-w_max : 2                          #VELOCIDAD ANGULAR MAXIMA
-vel_cruc : 4                       #VELOCIDAD DE CRUCERO TRASLACIONAL
+w_max : 6.6                        #VELOCIDAD ANGULAR MAXIMA
+vel_cruc : 1.7                     #VELOCIDAD DE CRUCERO TRASLACIONAL
 
 #PARAMETROS DE COORDENADAS Y TRAYECTORIA
 coordenadas : [[-3.5, 3.5],

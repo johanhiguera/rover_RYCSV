@@ -69,11 +69,16 @@ class CONTROL_DIR_RUEDAS:
         self.w = order.data[1]
     
     def calcular_angulos(self):
-        R = - self.vel_y / self.w
-        self.dir_order[0] = math.atan2(self.l_r1*math.sin(self.alpha_r1),R-self.l_r1*math.cos(self.alpha_r1))
-        self.dir_order[1] = math.atan2(self.l_r3*math.sin(self.alpha_r3),R-self.l_r3*math.cos(self.alpha_r3))
-        self.dir_order[2] = math.atan2(self.l_l1*math.sin(self.alpha_l1),R-self.l_l1*math.cos(self.alpha_l1))
-        self.dir_order[3] = math.atan2(self.l_l3*math.sin(self.alpha_l3),R-self.l_l3*math.cos(self.alpha_l3))
+        if math.fabs(self.w) > 1E-5:
+            R = self.vel_y / self.w
+            self.dir_order[0] = math.pi-math.atan2(self.l_r1*math.sin(self.alpha_r1),R-self.l_r1*math.cos(self.alpha_r1))
+            self.dir_order[1] = math.pi-math.atan2(self.l_r3*math.sin(self.alpha_r3),R-self.l_r3*math.cos(self.alpha_r3))
+            self.dir_order[2] = math.pi-math.atan2(self.l_l1*math.sin(self.alpha_l1),R-self.l_l1*math.cos(self.alpha_l1))
+            self.dir_order[3] = math.pi-math.atan2(self.l_l3*math.sin(self.alpha_l3),R-self.l_l3*math.cos(self.alpha_l3))
+            rospy.loginfo(self.dir_order)
+        else:
+            self.dir_order = [0,0,0,0]
+        rospy.loginfo(self.dir_order)
     
     def controlar_direccion(self):
         self.pub1.publish(self.dir_order[0])

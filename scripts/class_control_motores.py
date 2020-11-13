@@ -54,7 +54,7 @@ class CONTROL_MOTORES:
 
 
         while (not rospy.is_shutdown()):
-            #self.modelo.actualizar_modelo()
+            self.modelo.actualizar_modelo()
             self.control_ruedas()
             self.enviar_odometria()
             rate.sleep()
