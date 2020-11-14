@@ -3,7 +3,7 @@
 
     <!-- We resume the logic in gazebo_ros package empty_world.launch, -->
     <!-- changing only the name of the world to be launched -->
-    <arg name="model" default="$(find rover_RYCSV)/urdf/rover_RYCSV.urdf"/>
+    <arg name="model" default="$(find rover_RYCSV)/urdf/rover_RYCSV.urdf.xacro"/>
     <arg name="x" default="0.0"/>
     <arg name="y" default="0.0"/>
     <arg name="z" default="0.01"/>
@@ -16,7 +16,7 @@
     <!-- Parse of Model -->
     <param 
         name="robot_description" 
-        command="$(find xacro)/xacro $(arg model)"
+        command="$(find xacro)/xacro '$(find rover_RYCSV)/urdf/rover_RYCSV.urdf.xacro'"
     />
     
     <!-- Robot_state_publisher -->
@@ -52,7 +52,9 @@
                 dir_right_llanta_1
                 dir_right_llanta_3
                 rocker_izq
-                rocker_der"
+                rocker_der
+                bogie_izq
+                bogie_der"
     />
 
     <!-- ///////////////////////////////////////////////////////////////      -->

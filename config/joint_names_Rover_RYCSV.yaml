@@ -53,4 +53,12 @@ rocker_izq:
 rocker_der:
   type: "effort_controllers/JointPositionController"
   joint: Caja__rocker_der
-  pid: {p: 10.0, i: 0.01, d: 1.0}
+  pid: {p: 10.0, i: 0.01, d: 5.0}
+
+bogie_izq:
+  type: "effort_controllers/JointEffortController"
+  joint: Rocker_izq__bogie_izq
+
+bogie_der:
+  type: "effort_controllers/JointEffortController"
+  joint: Rocker_der__bogie_der
