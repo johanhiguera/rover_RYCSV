@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<robot name="rover_RYCSV" xmlns:xacro="http://ros.org/wiki/xacro">
 
-<robot name="rover_RYCSV">
+  <xacro:include filename="$(find rover_RYCSV)/urdf/camera.gazebo.xacro" />
+  <xacro:include filename="$(find rover_RYCSV)/urdf/lidar.gazebo.xacro" />
+  <xacro:include filename="$(find rover_RYCSV)/urdf/imu.gazebo.xacro" />
 
   <link name="base_footprint"/>
     
@@ -95,30 +98,14 @@
         <box size="0.01 0.05 0.05"/>
       </geometry>
     </collision>
-    <sensor type="camera" name="base_camera">
-      <camera>
-        <horizontal_fov>1.047</horizontal_fov>
-        <image>
-          <width>320</width>
-          <height>240</height>
-        </image>
-        <clip>
-          <near>0.1</near>
-          <far>100</far>
-        </clip>
-      </camera>
-      <always_on>1</always_on>
-      <update_rate>30</update_rate>
-      <visualize>true</visualize>
-    </sensor>
   </link>
 
   <joint
     name="Caja_camera"
     type="fixed">
     <origin
-      xyz="0.15 0.145 0.047"
-      rpy="0 0 0" />
+      xyz="-0.225 0.095 0.047"
+      rpy="-1.570709 3.141592 0" />
     <parent
       link="Caja" />
     <child
@@ -128,75 +115,33 @@
   </joint>
 
   <link name="Lidar">
-    <inertial>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <mass
-        value="0.025" />
-      <inertia
-        ixx="0.0001"
-        ixy="0.0"
-        ixz="0.0"
-        iyy="0.0001"
-        iyz="0.0"
-        izz="0.0001" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <cylinder radius="0.025" length="0.025"/>
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <cylinder radius="0.025" length="0.025"/>
+    <box size="0.1 0.1 0.1"/>
       </geometry>
     </collision>
-    <sensor type="lidar" name="base_lidar">
-      <lidar>
-        <scan>
-          <horizontal>
-            <samples>640</samples>
-            <resolution>1</resolution>
-            <min_angle>0</min_angle>
-            <max_angle>0</max_angle>
-          </horizontal>
-          <vertical>
-            <samples>640</samples>
-            <resolution>1</resolution>
-            <min_angle>0</min_angle>
-            <max_angle>0</max_angle>
-          </vertical>
-        </scan>
-        <range>
-          <min>0.05</min>
-          <max>2</max>
-          <resolution>0</resolution>
-        </range>
-      </lidar>
-      <always_on>1</always_on>
-      <update_rate>30</update_rate>
-      <visualize>true</visualize>
-    </sensor>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rover_RYCSV/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
   </link>
 
   <joint
     name="Caja_lidar"
     type="fixed">
     <origin
-      xyz="-0.22 0.0125 0.047"
-      rpy="1.5707 0 0" />
+      xyz="-0.225 0.035 0.047"
+      rpy="-1.570709 -3.141592 0" />
     <parent
       link="Caja" />
     <child
@@ -241,52 +186,6 @@
         <box size="0.025 0.005 0.025"/>
       </geometry>
     </collision>
-    <sensor type="imu" name="base_IMU">
-      <imu>
-        <orientation_reference_frame>
-          <localization>CUSTOM</localization>
-          <custom_rpy>0 0 0</custom_rpy>
-          <grav_dir_x>1 0 0</grav_dir_x>
-        </orientation_reference_frame>
-        <angular_velocity>
-          <x>
-            <noise>
-              <type>none</type>
-            </noise>
-          </x>
-          <y>
-            <noise>
-              <type>none</type>
-            </noise>
-          </y>
-          <z>
-            <noise>
-              <type>none</type>
-            </noise>
-          </z>
-        </angular_velocity>
-        <linear_acceleration>
-          <x>
-            <noise>
-              <type>none</type>
-            </noise>
-          </x>
-          <y>
-            <noise>
-              <type>none</type>
-            </noise>
-          </y>
-          <z>
-            <noise>
-              <type>none</type>
-            </noise>
-          </z>
-        </linear_acceleration>
-      </imu>
-      <always_on>1</always_on>
-      <update_rate>30</update_rate>
-      <visualize>true</visualize>
-    </sensor>
   </link>
   
   <joint
