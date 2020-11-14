@@ -92,4 +92,18 @@
         name="Control_dir_ruedas" 
         output="screen">     
     </node>
+
+    <node 
+        pkg="rover_RYCSV"
+        type="controlador_node.py" 
+        name="Controlador" 
+        output="screen">              
+    </node>
+
+    <node 
+        pkg="rover_RYCSV" 
+        type="TF_node.py" 
+        name="TF" 
+        output="screen">        
+    </node>
 </launch>
