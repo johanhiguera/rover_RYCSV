@@ -52,7 +52,9 @@
                 dir_right_llanta_1
                 dir_right_llanta_3
                 rocker_izq
-                rocker_der"
+                rocker_der
+                bogie_izq
+                bogie_der"
     />
 
     <!-- ///////////////////////////////////////////////////////////////      -->

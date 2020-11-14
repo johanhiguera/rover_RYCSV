@@ -5,7 +5,7 @@ radius : 0.075
 # Ubicaciones ruedas derechas
 alpha_r1 : 1.04041
 beta_r1 : 2.10117
-l_r1 : 0.3197035
+l_r1 : 0.4019374749
 
 alpha_r2 : 0
 beta_r2 : 3.14159
@@ -13,12 +13,12 @@ l_r2 : 0.254275
 
 alpha_r3 : -1.04041
 beta_r3 : -2.10117
-l_r3 : 0.3197035
+l_r3 : 0.4019374749
 
 # Ubicaciones ruedas izquierdas
 alpha_l1 : 2.10117
 beta_l1 : 1.04041
-l_l1 : 0.3197035
+l_l1 : 0.4019374749
 
 alpha_l2 : 3.14159
 beta_l2 : 0
@@ -26,7 +26,7 @@ l_l2 : 0.254575
 
 alpha_l3 : -2.10117
 beta_l3 : -1.04041
-l_l3 : 0.3197035
+l_l3 : 0.4019374749
 
 #PARAMETROS DEL ROBOT
 w_max : 6.6                        #VELOCIDAD ANGULAR MAXIMA

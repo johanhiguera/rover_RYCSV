@@ -59,6 +59,333 @@
       xyz="0 0 0" />
   </joint>
 
+  <link name="Camera">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0001"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.0001"
+        iyz="0.0"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.05 0.05"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.05 0.05"/>
+      </geometry>
+    </collision>
+    <sensor type="camera" name="base_camera">
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>320</width>
+          <height>240</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </link>
+
+  <joint
+    name="Caja_camera"
+    type="fixed">
+    <origin
+      xyz="0.15 0.145 0.047"
+      rpy="0 0 0" />
+    <parent
+      link="Caja" />
+    <child
+      link="Camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="Lidar">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0001"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.0001"
+        iyz="0.0"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.025" length="0.025"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.025" length="0.025"/>
+      </geometry>
+    </collision>
+    <sensor type="lidar" name="base_lidar">
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>640</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>640</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>2</max>
+          <resolution>0</resolution>
+        </range>
+      </lidar>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </link>
+
+  <joint
+    name="Caja_lidar"
+    type="fixed">
+    <origin
+      xyz="-0.22 0.0125 0.047"
+      rpy="1.5707 0 0" />
+    <parent
+      link="Caja" />
+    <child
+      link="Lidar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link name="IMU">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.005" />
+      <inertia
+        ixx="0.00001"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.00001"
+        iyz="0.0"
+        izz="0.00001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.005 0.025"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.005 0.025"/>
+      </geometry>
+    </collision>
+    <sensor type="imu" name="base_IMU">
+      <imu>
+        <orientation_reference_frame>
+          <localization>CUSTOM</localization>
+          <custom_rpy>0 0 0</custom_rpy>
+          <grav_dir_x>1 0 0</grav_dir_x>
+        </orientation_reference_frame>
+        <angular_velocity>
+          <x>
+            <noise>
+              <type>none</type>
+            </noise>
+          </x>
+          <y>
+            <noise>
+              <type>none</type>
+            </noise>
+          </y>
+          <z>
+            <noise>
+              <type>none</type>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x>
+            <noise>
+              <type>none</type>
+            </noise>
+          </x>
+          <y>
+            <noise>
+              <type>none</type>
+            </noise>
+          </y>
+          <z>
+            <noise>
+              <type>none</type>
+            </noise>
+          </z>
+        </linear_acceleration>
+      </imu>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </link>
+  
+  <joint
+    name="Caja_IMU"
+    type="fixed">
+    <origin
+      xyz="0 0.0025 0.047"
+      rpy="0 0 0" />
+    <parent
+      link="Caja" />
+    <child
+      link="IMU" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="GPS">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.005" />
+      <inertia
+        ixx="0.00001"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.00001"
+        iyz="0.0"
+        izz="0.00001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.005 0.025"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.005 0.025"/>
+      </geometry>
+    </collision>
+    <sensor type="gps" name="base_GPS">
+      <gps>
+        <position_sensing>
+          <horizontal>
+            <noise>
+              <type>none</type>
+            </noise>
+          </horizontal>
+          <vertical>
+            <noise>
+              <type>none</type>
+            </noise>
+          </vertical>
+        </position_sensing>
+        <velocity_sensing>
+          <horizontal>
+            <noise>
+              <type>none</type>
+            </noise>
+          </horizontal>
+          <vertical>
+            <noise>
+              <type>none</type>
+            </noise>
+          </vertical>
+        </velocity_sensing>
+      </gps>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </link>
+
+  <joint
+    name="Caja_GPS"
+    type="fixed">
+    <origin
+      xyz="0.1 0.0025 0.047"
+      rpy="0 0 0" />
+    <parent
+      link="Caja" />
+    <child
+      link="GPS" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
   <link
     name="Rocker_izq">
     <inertial>
@@ -159,7 +486,7 @@
 
   <joint
     name="Rocker_izq__bogie_izq"
-    type="fixed">
+    type="revolute">
     <origin
       xyz="0.175396751230297 -0.0942654690027159 0.0229999999999996"
       rpy="0 0 -0.0145421781375742" />
@@ -168,7 +495,9 @@
     <child
       link="Bogie_izq" />
     <axis
-      xyz="0 0 0" />
+      xyz="0 0 1" />
+    <limit 
+      effort="30" velocity="10.0" lower="-3.14159" upper="3.14159" />
   </joint>
 
   <link
@@ -611,7 +940,7 @@
 
   <joint
     name="Rocker_der__bogie_der"
-    type="continuous">
+    type="revolute">
     <origin
       xyz="0.1754 -0.094265 -0.00065699"
       rpy="0 0 -0.014542" />
@@ -621,6 +950,8 @@
       link="Bogie_der" />
     <axis
       xyz="0 0 1" />
+    <limit 
+      effort="30" velocity="10.0" lower="-3.14159" upper="3.14159" />
   </joint>
 
   <link
@@ -1080,6 +1411,26 @@
       </joint>
       <actuator name="rocker_der">
           <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_13">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Rocker_izq__bogie_izq">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="bogie_izq">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </actuator>
+  </transmission>
+
+  <transmission name="tranmission_14">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="Rocker_der__bogie_der">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="bogie_der">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </actuator>
   </transmission>
 
