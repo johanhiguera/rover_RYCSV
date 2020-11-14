@@ -29,25 +29,24 @@ beta_l3 : -1.04041
 l_l3 : 0.4019374749
 
 #PARAMETROS DEL ROBOT
-w_max : 6.6                        #VELOCIDAD ANGULAR MAXIMA
+w_max : 1                        #VELOCIDAD ANGULAR MAXIMA
 vel_cruc : 1.7                     #VELOCIDAD DE CRUCERO TRASLACIONAL
 
+#PARAMETROS DE INVOCACIÓN ROBOT
+x : 0.0                            #POSICION X INICIAL DEL ROBOT
+y : 0.0                            #POSICION Y INICIAL DEL ROBOT
+theta : 0.0                      #ORIENTACION INICIAL DEL ROBOT
+
 #PARAMETROS DE COORDENADAS Y TRAYECTORIA
-coordenadas : [[-3.5, 3.5],
-              [ 1.5, 3.5],
-              [ 1.5,-1.5],
-              [ 3.5,-1.5],
-              [ 3.5,-8.0],
-              [-2.5,-8.0],
-              [-2.5,-5.5],
-              [ 1.5,-5.5],
-              [ 1.5,-3.5],
-              [-1.0,-3.5]]
-ds : 1                             #DISTANCIAMIENTO ENTRE PUNTOS DE TRAYECTORIA
+coordenadas : [[0.0, 0.0],
+              [-6.5, 0.0],
+              [-6.5, 6.5],
+              [ 4.2, 6.5]]
+ds : 2                             #DISTANCIAMIENTO ENTRE PUNTOS DE TRAYECTORIA
 num_coor_tray : 0
 
 #PARAMETROS DEL PROGRAMA
-f : 50                             #FRECUENCIA DE PUBLICACION
+f : 20                             #FRECUENCIA DE PUBLICACION
 
 #PARAMETROS DEL CONTROLADOR DEL ROBOT
-Kp : [ 5, 0.05,-2]                 #COEFICIENTES DEL CONTROLADOR PROPORCIONAL
+Kp : [ 5, 2,-2]                 #COEFICIENTES DEL CONTROLADOR PROPORCIONAL
