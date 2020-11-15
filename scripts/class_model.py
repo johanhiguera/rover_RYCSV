@@ -2,10 +2,8 @@
 
 import rospy
 import numpy as np
-import math
 
 from   sensor_msgs.msg      import JointState
-from   std_msgs.msg         import Float64
 
 class Model_robot:
     def __init__(self):

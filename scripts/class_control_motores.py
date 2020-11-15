@@ -1,12 +1,9 @@
 #!/usr/bin/python
 
 import rospy
-import numpy as np
-import sys, select, termios, tty
 
 from   std_msgs.msg         import Float64
 from   geometry_msgs.msg    import Twist
-from   sensor_msgs.msg      import JointState
 from   rospy.numpy_msg      import numpy_msg
 from   std_msgs.msg         import Float64MultiArray
 

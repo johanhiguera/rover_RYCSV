@@ -3,8 +3,8 @@
   <xacro:arg name="imu_enable" default="true"/>
   <xacro:arg name="gps_enable" default="true"/>
   <!-- Si el sensor kinect esta habilitado entonces la camara y lidar no lo pueden estar-->
-  <xacro:arg name="kinect_enable" default="true"/>
-  <xacro:arg name="camera_and_lidar_enable" default="false"/>
+  <xacro:arg name="kinect_enable" default="false"/>
+  <xacro:arg name="camera_and_lidar_enable" default="true"/>
 
   <link name="base_footprint"/>
     
@@ -400,7 +400,7 @@
     <axis
       xyz="1 0 0" />
     <limit 
-      effort="2" velocity="10.0" />
+      effort="0.5" velocity="10.0" />
   </joint>
 
   <link

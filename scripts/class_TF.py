@@ -10,25 +10,13 @@ import tf2_msgs.msg
 from    geometry_msgs.msg   import TransformStamped
 from    std_msgs.msg        import Bool
 from    std_msgs.msg        import Float64MultiArray
+from    sensor_msgs.msg     import NavSatFix
+from    sensor_msgs.msg     import Imu
+from tf.transformations import euler_from_quaternion
 
 class TF:  
 
     def __init__(self):
-        #PARAMETROS
-        self.theta = - rospy.get_param("/theta")* 3.141592 / 180.0
-        self.ds = rospy.get_param("/ds")
-        self.f = rospy.get_param("/f")
-        self.coordenadas1 = rospy.get_param("/coordenadas")
-        self.position = Float64MultiArray()
-        self.pos_x=0
-        self.pos_y=0
-        self.pos_w=0
-
-        self.update_coor()
-        self.creacion_tray()
-        #rospy.loginfo(self.coordenadas)
-        #rospy.loginfo(self.tray)
-
         #CREACION DE BROADCAST
         self.pub_tf = rospy.Publisher("/tf", tf2_msgs.msg.TFMessage, queue_size=5)
         self.broadcts  = tf2_ros.TransformBroadcaster()
@@ -36,12 +24,32 @@ class TF:
 
         #SUBSCRIPCION AL TOPICO DE COMUNICACION ENTRE TF_NODE Y CONTROLADOR_NODE
         rospy.Subscriber("/next_coord",Bool,self.callback_next)
-        rospy.Subscriber("/position",Float64MultiArray,self.callback_position)
-        
+        #rospy.Subscriber("/vel_robot",numpy_msg(Twist),self.callback_position)
+        rospy.Subscriber("/rover/gps/pos",NavSatFix,self.callback_gps)
+        rospy.Subscriber("/rover/imu",Imu,self.callback_imu)
+
+        #PARAMETROS
+        self.theta = - rospy.get_param("/theta")* 3.141592 / 180.0
+        self.ds = rospy.get_param("/ds")
+        self.f = rospy.get_param("/f")
+        self.coordenadas1 = rospy.get_param("/coordenadas")
+        self.position = Float64MultiArray()
+        self.pos_x = 0
+        self.pos_y = 0
+        self.theta = 0
+        self.first_gps = 1
+        self.pos_x_init = 0
+        self.pos_y_init = 0
+
+        while self.first_gps:
+            self.i = 0                          #VARIABLE PARA RECORRER MATRIZ SELF.TRAY (COORDENADAS DE TRAYECTORIA EN EL SISTEMA DEL ROBOT)
+
+        self.update_coor()
+        self.creacion_tray()
+        #rospy.loginfo(self.coordenadas)
+        #rospy.loginfo(self.tray)        
 
         rate = rospy.Rate(self.f)
-
-        self.i = 0                              #VARIABLE PARA RECORRER MATRIZ SELF.TRAY (COORDENADAS DE TRAYECTORIA EN EL SISTEMA DEL ROBOT)
 
         rospy.loginfo("Nodo TF inicio correctamente ")
         
@@ -50,7 +58,33 @@ class TF:
                 self.update_odom()
                 self.update_goal(self.i+1)
                 rate.sleep()              
-        
+    
+    def callback_gps(self,data):
+        if (self.first_gps == 1):
+            #rospy.loginfo("Primera posicion tomada")
+            self.first_gps = 0
+            self.pos_x_init = data.longitude*111111
+            self.pos_y_init = data.latitude*111111
+            self.pos_x = data.longitude*111111
+            self.pos_y = data.latitude*111111
+        else:
+            self.pos_x = data.longitude*111111
+            self.pos_y = data.latitude*111111
+            #rospy.loginfo("Posicion GPS registrada")
+    
+    def callback_imu(self,data):
+        self.a_x = data.linear_acceleration.x
+        self.a_y = data.linear_acceleration.y
+        self.a_z = data.linear_acceleration.z
+        self.w_x = data.angular_velocity.x
+        self.w_y = data.angular_velocity.y
+        self.w_z = data.angular_velocity.y
+        thetas = euler_from_quaternion([data.orientation.x,data.orientation.y,data.orientation.z,data.orientation.w])
+        self.theta_x = thetas[0] - math.pi
+        self.theta_y = thetas[1]
+        self.theta_z = thetas[2]
+        #rospy.loginfo("Lectura IMU registrada")
+
     def update_coor(self):                      #FUNCION PARA CAMBIAR LAS COORDENADAS EN TERMINOS DEL SISTEMA DE REFERENCIA DEL ROBOT
         self.coordenadas = []
         for i in range(len(self.coordenadas1)):
@@ -92,12 +126,6 @@ class TF:
 
         #rospy.loginfo("CAMBIO DE COORDENADA")
 
-    def callback_position(self,data): 
-        self.position = data 
-        self.pos_x=self.position.data[0]
-        self.pos_y=self.position.data[1]
-        self.pos_w=self.position.data[2]            
-
     def update_goal(self, i): #FUNCION PARA ACTUALIZAR LA MATRIZ DE TRANSFORMACION ODOM-GOAL PERIODICAMENTE
         t = TransformStamped()
         t.header.frame_id = "odom"
@@ -119,8 +147,8 @@ class TF:
         to.header.frame_id = "base_footprint"
         to.header.stamp = rospy.Time.now()
         to.child_frame_id = "odom"
-        to.transform.translation.x = self.pos_x
-        to.transform.translation.y = self.pos_y
+        to.transform.translation.x = -(self.pos_x-self.pos_x_init)
+        to.transform.translation.y = -(self.pos_y-self.pos_y_init)
         to.transform.translation.z = 0.0
 
         to.transform.rotation.x = 0.0
